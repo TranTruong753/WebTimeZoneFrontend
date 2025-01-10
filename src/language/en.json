@@ -1,0 +1,8 @@
+{
+  "welcome": "Welcome",
+  "greeting": "Hello, {name}!",
+  "menuTitle":{
+    "home": "Home",
+    "shop": "Shop"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "welcome": "Chào mừng",
+  "greeting": "Xin chào, {name}!",
+  "menuTitle":{
+    "home": "Trang chủ",
+    "shop": "Cửa hàng"
+  }
+}

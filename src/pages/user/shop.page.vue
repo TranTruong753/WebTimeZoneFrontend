@@ -8,11 +8,16 @@
 </template>
 
 <script setup lang="ts">
+import { useConfigStore } from '@/stores/config.store';
 import { useI18n } from 'vue-i18n'
 
 const { locale } = useI18n()
+const useConfig = useConfigStore()
+
+
 
 const switchLanguage = (lang:any) => {
+    useConfig.addAndUpdateKeyConfig('lang',lang)
     locale.value = lang
 }
 </script>

@@ -1,7 +1,25 @@
 <script setup lang="ts">
 import { useDark, useToggle } from '@vueuse/core'
-import TheMenu from './TheMenu.vue';
+import TheNav from './TheNav.vue';
+import { useWindowScroll } from '@vueuse/core';
+import { ref, watchEffect } from 'vue';
 
+// Định nghĩa biến `isFixed` và sử dụng `useWindowScroll` để theo dõi vị trí cuộn
+const isFixed = ref(false);
+const previousScrollY = ref(0);  // Biến lưu vị trí cuộn trước đó
+
+const { y } = useWindowScroll(); // Trả về giá trị cuộn theo trục y
+
+// Thêm hoặc bớt class `fixed` khi cuộn lên hoặc cuộn xuống
+watchEffect(() => {
+  if (y.value < previousScrollY.value && y.value>110) {  // Nếu cuộn lên
+    isFixed.value = true;
+  } else {  // Nếu cuộn xuống
+    isFixed.value = false;
+  }
+  
+  previousScrollY.value = y.value;  // Cập nhật vị trí cuộn trước đó
+});
 
 const isDark = useDark({
     storageKey: 'my-dark-mode', // Tên key lưu vào localStorage
@@ -9,11 +27,14 @@ const isDark = useDark({
 const toggleDark = useToggle(isDark)
 
 
+
+
+
 </script>
 
 <template>
     <!-- Header Start -->
-    <div class="header-area">
+    <div :class="{'header-area': true, 'fixed': isFixed}">
         <div class="main-header header-sticky">
             <div class="container-fluid">
                 <div class="menu-wrapper">
@@ -22,7 +43,7 @@ const toggleDark = useToggle(isDark)
                         <router-link to="/"><img src="@/assets/img/logo/logo.png" alt="logo"></router-link>
                     </div>
                     <!-- Main-menu -->
-                    <TheMenu></TheMenu>
+                    <TheNav></TheNav>
                     <!-- Header Right -->
                     <div class="header-right">
                         <ul>
@@ -59,4 +80,19 @@ const toggleDark = useToggle(isDark)
   
 </template>
 
-<style scoped></style>
+<style scoped>
+.header-area {
+  transition: all 0.3s ease-in-out; /* Thêm hiệu ứng chuyển tiếp cho toàn bộ thay đổi */
+}
+
+.fixed {
+    /* background: transparent !important; */
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+    top: 0;
+    left: 0;
+   
+
+}
+</style>

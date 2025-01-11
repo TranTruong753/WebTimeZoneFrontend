@@ -1,10 +1,10 @@
 @import url("https://fonts.googleapis.com/css?family=Josefin+Sans:200,300,400,500,600,700|Roboto:100,300,400,500,700&display=swap");
 
 html {
-    --text-color: #000;
+    --text-color: #0b1c39;
     --header-act-dropdown-bg: #fff;
     --header-act-dropdown-shadow:  rgba(0, 0, 0, 0.05);
-
+    --header-bg-color: #fff;
 
     --ball-color: #fff;
     --ball-bg-color:#000;
@@ -13,6 +13,7 @@ html {
     /* Footer */
 
     --footer-text-color: #868c98;
+    --error-text-color: var(--footer-text-color);
  
 }
 
@@ -26,6 +27,9 @@ html.dark {
     --footer-bg-color: var(--header-bg-color);
     --footer-text-color: #9e9da6;
 
+    /* Error Page */
+    --error-text-color: var(--footer-text-color);
+
     --top-act-group-bg-color: #292e39;
     --top-act-group-shadow: rgba(0, 0, 0, 0.2);
     --top-act-group-separate: #545458;
@@ -33,7 +37,7 @@ html.dark {
    /* Ball  */
     --ball-color: #292e39;
     --ball-bg-color:#fff;
-    --ball-shadow-color:rgba(0, 0, 0, 0.14) 
+    --ball-shadow-color:rgba(0, 0, 0, 0.14) ;
 
 
      /* Header */
@@ -2402,6 +2406,7 @@ input:focus {
 
 .header-area {
     background: var(--header-bg-color);
+   
 }
 
 .header-area .main-header {
@@ -2509,7 +2514,7 @@ input:focus {
 .header-area .main-header .menu-wrapper .main-menu ul ul.submenu {
     position: absolute;
     width: 170px;
-    background: var(--header-act-dropdown-bg);
+    background: var(--header-act-dropdown-bg) ;
     left: 0;
     top: 90%;
     visibility: hidden;

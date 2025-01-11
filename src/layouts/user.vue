@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import Header from '@/components/user/TheHeader.vue';
 import Footer from '@/components/user/TheFooter.vue';
+
+
+
+
 </script>
 
 <template>
@@ -10,3 +14,13 @@ import Footer from '@/components/user/TheFooter.vue';
     </main>
     <Footer></Footer>
 </template>
+
+<style scoped>
+
+main {
+    /* padding-top: 19vh; */
+    height: 3000px;
+    background: var(--body-bg);
+}
+
+</style>

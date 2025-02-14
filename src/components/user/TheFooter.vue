@@ -94,10 +94,3 @@
     </footer>
 </template>
 
-<style scoped>
-
-.footer-area  {
-    background: var(--footer-bg-color) !important;
-}
-
-</style>

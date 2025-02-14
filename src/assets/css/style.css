@@ -6,6 +6,8 @@ html {
     --header-act-dropdown-shadow:  rgba(0, 0, 0, 0.05);
     --header-bg-color: #fff;
 
+    --body-bg-color: #fff;
+
     --ball-color: #fff;
     --ball-bg-color:#000;
     --ball-shadow-color:rgba(255, 255, 255, 0.2);
@@ -18,12 +20,15 @@ html {
 }
 
 html.dark {
-    --text-color: #fff;
+    --text-color: #fefcfc;
     --icon-color: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7482%) hue-rotate(72deg) brightness(99%)
         contrast(99%);
 
     --body-bg: #292e39;
     --header-bg-color: #171c28;
+
+    --body-bg-color: #1c2232;
+
     --footer-bg-color: var(--header-bg-color);
     --footer-text-color: #9e9da6;
 
@@ -143,6 +148,9 @@ html.dark {
     --separate-color: #292e39;
 }
 
+body {
+    background: var(--body-bg-color);
+}
 
 .white-bg {
     background: #ffffff;
@@ -2406,6 +2414,7 @@ input:focus {
 
 .header-area {
     background: var(--header-bg-color);
+    
    
 }
 
@@ -2941,7 +2950,8 @@ input:focus {
     transition: all 0.4s ease-out 0s;
 }
 .single-new-pro .product-caption h3 a {
-    color: #444444;
+    /* color: #444444; */
+    color: var(--text-color);
     font-weight: 700;
     font-size: 24px;
     margin-bottom: 12px;
@@ -3059,7 +3069,8 @@ input:focus {
     cursor: pointer;
 }
 .popular-items .single-popular-items .popular-caption h3 a {
-    color: #444444;
+    /* color: #444444; */
+    color: var(--text-color);
     font-weight: 700;
     font-size: 24px;
     margin-bottom: 12px;
@@ -3075,7 +3086,9 @@ input:focus {
     }
 }
 .popular-items .single-popular-items .popular-caption span {
-    color: #444444;
+    /* color: #444444; */
+    color: var(--text-color);
+    opacity: 0.8;
     font-size: 18px;
     font-weight: 500;
     display: block;
@@ -3298,7 +3311,7 @@ input:focus {
     font-size: 30px;
 }
 .watch-area .watch-details h2 {
-    color: #000;
+    color: var(--text-color);
     font-size: 56px;
     font-weight: 700;
     line-height: 1;
@@ -3498,7 +3511,7 @@ input:focus {
     color: #000000;
 }
 .section-tittle h2 {
-    color: #000;
+    color: var(--text-color);
     font-size: 48px;
     font-weight: 700;
     line-height: 1;

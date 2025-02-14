@@ -18,9 +18,7 @@ import Footer from '@/components/user/TheFooter.vue';
 <style scoped>
 
 main {
-    /* padding-top: 19vh; */
-    height: 3000px;
-    background: var(--body-bg);
+  
 }
 
 </style>

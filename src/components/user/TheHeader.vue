@@ -2,14 +2,13 @@
 import { useDark, useToggle } from '@vueuse/core'
 import TheNav from './TheNav.vue';
 import { useWindowScroll } from '@vueuse/core';
-import { ref, watchEffect } from 'vue';
+import { ref, watchEffect,onBeforeMount } from 'vue';
 
 // Định nghĩa biến `isFixed` và sử dụng `useWindowScroll` để theo dõi vị trí cuộn
 const isFixed = ref(false);
 const previousScrollY = ref(0);  // Biến lưu vị trí cuộn trước đó
-
 const { y } = useWindowScroll(); // Trả về giá trị cuộn theo trục y
-
+const isLight = ref(false);
 // Thêm hoặc bớt class `fixed` khi cuộn lên hoặc cuộn xuống
 watchEffect(() => {
   if (y.value < previousScrollY.value && y.value>110) {  // Nếu cuộn lên
@@ -24,17 +23,20 @@ watchEffect(() => {
 const isDark = useDark({
     storageKey: 'my-dark-mode', // Tên key lưu vào localStorage
 });
+
 const toggleDark = useToggle(isDark)
 
-
-
+onBeforeMount(()=>{
+    const mode = localStorage.getItem('my-dark-mode') 
+    isLight.value = mode === 'auto'?false:true;
+}) 
 
 
 </script>
 
 <template>
     <!-- Header Start -->
-    <div :class="{'header-area': true, 'fixed': isFixed}">
+    <div :class="{'header-area': true, 'fixed': isFixed,}">
         <div class="main-header header-sticky">
             <div class="container-fluid">
                 <div class="menu-wrapper">
@@ -58,7 +60,7 @@ const toggleDark = useToggle(isDark)
                             <li><a href=""><span class="flaticon-shopping-cart icon_color"></span></a> </li>
                             <li>
                                 <div class="checkbox-wrap">
-                                    <input type="checkbox" class="checkbox" id="checkbox" @input="toggleDark()">
+                                    <input type="checkbox" class="checkbox" id="checkbox" @input="toggleDark()" :checked="isLight">
                                     <label for="checkbox" class="checkbox-label">
                                         <i class="fas fa-moon"></i>
                                         <i class="fas fa-sun"></i>
@@ -83,6 +85,8 @@ const toggleDark = useToggle(isDark)
 <style scoped>
 .header-area {
   transition: all 0.3s ease-in-out; /* Thêm hiệu ứng chuyển tiếp cho toàn bộ thay đổi */
+  -webkit-box-shadow: 0 10px 15px rgba(25, 25, 25, 0.1);
+  box-shadow: 0 10px 15px rgba(25, 25, 25, 0.1);
 }
 
 .fixed {
